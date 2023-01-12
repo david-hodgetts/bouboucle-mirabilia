@@ -3,7 +3,8 @@ import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
 
-console.log("running config", config);
+
+console.log("version", __APP_VERSION__);
 
 async function loadImage(url) {
     return new Promise((resolve, reject) => {
@@ -13,6 +14,12 @@ async function loadImage(url) {
         image.src = url;
     });
 }
+
+const config = {
+    variant: "default",
+    newTiming: false,
+    backgroundColor: "#ffffff",
+};
 
 // integration on the mirabilia size entails the handling of a 
 // mirabilia specific header. This is handled here
