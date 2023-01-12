@@ -1,9 +1,15 @@
-# dev project for looper
+# bouboucle mirabilia
+
+a bouboucle app instance for use on the site of the [mirabilia](https://mirabilia.ch/fr) project.
+
+## installation instructions
+
+``` sh
+npm i
+```
+
+## run instructions
 
 ``` sh
 npm run dev
 ```
-
-open http://localhost:5173/
-
-develop in sibling project **looper**
