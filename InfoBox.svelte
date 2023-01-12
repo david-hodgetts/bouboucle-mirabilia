@@ -41,9 +41,10 @@
     }
     .text{
         padding-left: 20px;
-        font-size: 21px;
+        font-size: 23px;
+        padding-top: 2px;
     }
     .icon{
-        width: 30px;
+        width: 27px;
     }
 </style>
