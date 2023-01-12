@@ -4,7 +4,7 @@ import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
 
 
-console.log("version", __APP_VERSION__);
+console.log(`bouboucle mirabilia version ${__APP_VERSION__}`);
 
 async function loadImage(url) {
     return new Promise((resolve, reject) => {
@@ -119,7 +119,7 @@ async function main(){
         looper.scale({
             width: window.innerWidth,
             height: window.innerHeight - (titleHeight + mirabiliaHeaderHeight),
-            ratio
+            ratio,
         });
     });
 
@@ -130,7 +130,7 @@ async function main(){
     looper.scale({
         width: window.innerWidth,
         height: window.innerHeight - (titleHeight + mirabiliaHeaderHeight),
-        ratio
+        ratio,
     });
 }
 

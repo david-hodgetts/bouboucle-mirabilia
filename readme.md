@@ -1,14 +1,25 @@
-# bouboucle mirabilia
+# Bouboucle mirabilia
 
-a bouboucle app instance for use on the site of the [mirabilia](https://mirabilia.ch/fr) project.
+A bouboucle app instance for use on the site of the [mirabilia](https://mirabilia.ch/fr) project.
 
-## installation instructions
+
+## Foreground image definition
+
+A foreground can be added to the canvas by specifying a url in a query parameter with key **fg-url**.
+If the key not present, a blank classic *bouboucle* canvas will be displayed.
+
+```
+https://somehost?fg-url=an_url_pointing_to_an_image
+```
+
+
+## Installation instructions
 
 ``` sh
 npm i
 ```
 
-## run instructions
+## Run instructions
 
 ``` sh
 npm run dev
