@@ -52,15 +52,18 @@ function extractForegroundUrl(){
 }
 
 // returns a dimension -> { width: number, height: number } 
-async function computeDimension(foregroundUrl, titleHeight){
+async function computeDimensionFromFgUrl(foregroundUrl, titleHeight){
     if(foregroundUrl){
         try {
             const foregroundImage = await loadImage(foregroundUrl);
             const targetHeight = window.innerHeight - titleHeight;
             const scale = targetHeight / foregroundImage.naturalHeight;
             return {
-                "width": foregroundImage.naturalWidth * scale,
-                "height": foregroundImage.naturalHeight * scale,
+                foregroundUrlIsValid: true,
+                dimension: {
+                    width: foregroundImage.naturalWidth * scale,
+                    height: foregroundImage.naturalHeight * scale,
+                },
             };
         }catch(e){
             console.error(`unable to load fg-url ${foregroundUrl}`, e);
@@ -68,8 +71,11 @@ async function computeDimension(foregroundUrl, titleHeight){
     }
 
     return {
-        width: window.innerWidth,
-        height: window.innerHeight - titleHeight
+        foregroundUrlIsValid: false,
+        dimension:{
+            width: window.innerWidth,
+            height: window.innerHeight - titleHeight
+        },
     };
 }
 
@@ -89,7 +95,7 @@ async function main(){
     const mirabiliaHeaderHeight = 79; // height of external mirabilia header height (px)
     const fullSizeGif = !!urlParams['big-gif'];
     const foregroundUrl = extractForegroundUrl() || null;
-    const dimension = await computeDimension(foregroundUrl, (titleHeight + mirabiliaHeaderHeight));
+    const { dimension, foregroundUrlIsValid } = await computeDimensionFromFgUrl(foregroundUrl, (titleHeight + mirabiliaHeaderHeight));
     const graphics = {
         canvas: document.getElementById('main-canvas'),
         paper: paper,
@@ -98,7 +104,7 @@ async function main(){
     const looperConfig = Object.assign({
         graphics: graphics,
         backgroundColor: backgroundColor,
-        foregroundUrl,
+        foregroundUrl: foregroundUrlIsValid ? foregroundUrl : null,
     }, dimension);
 
     if (ratio) {
