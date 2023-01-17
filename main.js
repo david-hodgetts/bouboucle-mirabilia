@@ -63,7 +63,7 @@ async function computeDimension(foregroundUrl, titleHeight){
                 "height": foregroundImage.naturalHeight * scale,
             };
         }catch(e){
-            console.error(e);
+            console.error(`unable to load fg-url ${foregroundUrl}`, e);
         }
     }
 
