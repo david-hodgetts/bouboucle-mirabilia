@@ -12,7 +12,7 @@
             </div>
             <div class="row">
                 <img src="/_icons/3_trait_3.svg" alt="" class="icon">
-                <div class="text">Défini la fréquence / longueur de la ligne</div>
+                <div class="text">Définis la fréquence / longueur de la ligne</div>
             </div>
             <div class="row">
                 <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" class="icon">
