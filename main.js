@@ -3,7 +3,8 @@ import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
 
-console.log("running config", config);
+
+console.log(`bouboucle mirabilia version ${__APP_VERSION__}`);
 
 async function loadImage(url) {
     return new Promise((resolve, reject) => {
@@ -14,7 +15,14 @@ async function loadImage(url) {
     });
 }
 
+const config = {
+    variant: "default",
+    newTiming: false,
+    backgroundColor: "#ffffff",
+};
 
+// integration on the mirabilia size entails the handling of a 
+// mirabilia specific header. This is handled here
 function addTopPadding(paddingPx, titleHeight){
     document.querySelector('.menu').style.paddingTop = `${paddingPx}px`;
 
@@ -31,14 +39,44 @@ function addTopPadding(paddingPx, titleHeight){
         '#export-submenu',
         '#dialog-submenu',
         '#canvas-parent',
-
     ];
 
     const elements = itemsClasses.map(n => document.querySelector(n));
     for(const element of elements){
-        console.log("el", element);
         applyCssPatch(element);
     }
+}
+
+function extractForegroundUrl(){
+    return new URL(location.href).searchParams.get('fg-url');
+}
+
+// returns a dimension -> { width: number, height: number } 
+async function computeDimensionFromFgUrl(foregroundUrl, titleHeight){
+    if(foregroundUrl){
+        try {
+            const foregroundImage = await loadImage(foregroundUrl);
+            const targetHeight = window.innerHeight - titleHeight;
+            const scale = targetHeight / foregroundImage.naturalHeight;
+            return {
+                foregroundUrlIsValid: true,
+                dimension: {
+                    width: foregroundImage.naturalWidth * scale,
+                    height: foregroundImage.naturalHeight * scale,
+                },
+            };
+        }catch(e){
+            console.error(`unable to load fg-url ${foregroundUrl}`, e);
+        }
+    }
+
+    return {
+        foregroundUrlIsValid: false,
+        dimension:{
+            width: window.innerWidth,
+            height: window.innerHeight - titleHeight
+        },
+    };
 }
 
 async function main(){
@@ -53,19 +91,11 @@ async function main(){
     const backgroundColor =
       urlParams['background-color'] || config.backgroundColor || '#ffffff';
     const showGallery = !!urlParams.gallery;
-    const titleHeight = 79.67; // ui button row height in px
-    const mirabiliaHeaderHeight = 79; // height of external mirabilia header height
+    const titleHeight = 79.67; // ui button row height (px)
+    const mirabiliaHeaderHeight = 79; // height of external mirabilia header height (px)
     const fullSizeGif = !!urlParams['big-gif'];
-    const foregroundUrl = 'Coloriage_Assiette-polaire.png';
-    const foregroundImage = await loadImage(foregroundUrl);
-    console.log("img", foregroundImage)
-    const targetHeight = window.innerHeight - titleHeight;
-    const scale = targetHeight / foregroundImage.naturalHeight;
-    const dimension = {
-        "width": foregroundImage.naturalWidth * scale,
-        "height": foregroundImage.naturalHeight * scale,
-    };
-
+    const foregroundUrl = extractForegroundUrl() || null;
+    const { dimension, foregroundUrlIsValid } = await computeDimensionFromFgUrl(foregroundUrl, (titleHeight + mirabiliaHeaderHeight));
     const graphics = {
         canvas: document.getElementById('main-canvas'),
         paper: paper,
@@ -74,7 +104,7 @@ async function main(){
     const looperConfig = Object.assign({
         graphics: graphics,
         backgroundColor: backgroundColor,
-        foregroundUrl,
+        foregroundUrl: foregroundUrlIsValid ? foregroundUrl : null,
     }, dimension);
 
     if (ratio) {
@@ -95,7 +125,7 @@ async function main(){
         looper.scale({
             width: window.innerWidth,
             height: window.innerHeight - (titleHeight + mirabiliaHeaderHeight),
-            ratio
+            ratio,
         });
     });
 
@@ -106,7 +136,7 @@ async function main(){
     looper.scale({
         width: window.innerWidth,
         height: window.innerHeight - (titleHeight + mirabiliaHeaderHeight),
-        ratio
+        ratio,
     });
 }
 

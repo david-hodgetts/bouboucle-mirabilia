@@ -1,42 +1,43 @@
 import { getAssetString } from '@andreaskundig/looper-ui';
+import InfoBox from './InfoBox.svelte'
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const download_10 = getAssetString('10_download.svg');
     const erase_4 = getAssetString('4_erase.svg');
     const done_8 = getAssetString('8_done.svg');
 
-    var infoContent = [
-        '<div class="info">',
-        ' <div class="info-fr">',
-        '   <p>Bouboucle est un projet ',
-        "      d'Andréas Kündig et Ivan Gulizia.</p>",
-        "   <p>Publie ton animation sur notre ",
-        '     <a class="link" target="_blank"',
-        '        href="http://blog.bouboucle.com">blog</a>.',
-        "     Non vraiment, tu es le bienvenu.</p>",
-        "   <p>Visite la ",
-        '     <a class="link"',
-        '        href="http://www.bouboucle.com/gallery.html">galerie</a>',
-        "     d'animations créées spécialement pour notre exposition à ",
-        '     <a class="link" target="_blank" href="http://www.bdfil.ch/edition-2018/les-expositions/bouboucle">BFIL.</a></p>',
-        "   <p>L'<a",
-        '     href="ancien.html"  target="_blank"',
-        '     class="link">ancienne version</a>',
-        '     plus compliquée est toujours disponible.</p>',
-        ' </div>',
-        ' <div class="info-fr">',
-        "   <p>Ça fait plus que 10 ans qu'<a ",
-        '      href="http://www.andreaskundig.ch" target="_blank"',
-        '      class="link">Andréas</a>',
-        '      a la flemme de mettre à jour son site.</p>',
-        "   <p>Mais celui d'<a",
-        '      href="http://www.ivangulizia.com/" target="_blank"',
-        '      class="link">Ivan</a> est impeccable.</p>',
-        ' </div>',
-        '</div>'
-    ].join('\n'),
+    // var infoContent = [
+    //     '<div class="info">',
+    //     ' <div class="info-fr">',
+    //     '   <p>Bouboucle est un projet ',
+    //     "      d'Andréas Kündig et Ivan Gulizia.</p>",
+    //     "   <p>Publie ton animation sur notre ",
+    //     '     <a class="link" target="_blank"',
+    //     '        href="http://blog.bouboucle.com">blog</a>.',
+    //     "     Non vraiment, tu es le bienvenu.</p>",
+    //     "   <p>Visite la ",
+    //     '     <a class="link"',
+    //     '        href="http://www.bouboucle.com/gallery.html">galerie</a>',
+    //     "     d'animations créées spécialement pour notre exposition à ",
+    //     '     <a class="link" target="_blank" href="http://www.bdfil.ch/edition-2018/les-expositions/bouboucle">BFIL.</a></p>',
+    //     "   <p>L'<a",
+    //     '     href="ancien.html"  target="_blank"',
+    //     '     class="link">ancienne version</a>',
+    //     '     plus compliquée est toujours disponible.</p>',
+    //     ' </div>',
+    //     ' <div class="info-fr">',
+    //     "   <p>Ça fait plus que 10 ans qu'<a ",
+    //     '      href="http://www.andreaskundig.ch" target="_blank"',
+    //     '      class="link">Andréas</a>',
+    //     '      a la flemme de mettre à jour son site.</p>',
+    //     "   <p>Mais celui d'<a",
+    //     '      href="http://www.ivangulizia.com/" target="_blank"',
+    //     '      class="link">Ivan</a> est impeccable.</p>',
+    //     ' </div>',
+    //     '</div>'
+    // ].join('\n'),
 
-        exportContent = [
+    var exportContent = [
             ' <div class="export-1 info">',
             '   <div class="info-fr no-gist">',
             '     <p>Veux-tu générer un gif?</p>',
@@ -144,7 +145,11 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
         initInfoButton = function(menu){
             var infoButtonDiv = document.querySelector('#info-button'),
                 infoMenuDiv = document.querySelector('#info-submenu');
-            infoMenuDiv.innerHTML = infoContent;
+            // infoMenuDiv.innerHTML = infoContent;
+
+            const infoBox = new InfoBox({
+                target: infoMenuDiv,
+            });
             infoMenuDiv.addEventListener('click', function(){
                 menu.hideSubmenu();
             });
