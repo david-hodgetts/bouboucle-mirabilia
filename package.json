@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@andreaskundig/looper": "^1.0.7",
+    "@andreaskundig/looper": "^1.0.11",
     "@andreaskundig/looper-ui": "^1.0.17",
     "gifshot": "^0.4.5",
     "paper": "^0.12.15"
