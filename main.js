@@ -83,7 +83,18 @@ async function main(){
 
     const variant = config.variant || UIVariant.default;
     // 1 choose ui variant and setup dom accordingly
-    setupDomForVariant(variant);
+    const mirabiliaButtonOrder = [
+        "info-button",
+        "color-button",
+        "stroke-button",
+        "timing-button",
+        "clear-button",
+        "undo-button",
+        "redo-button",
+        "pause-button",
+        "export-button",
+    ];
+    setupDomForVariant(variant, undefined, mirabiliaButtonOrder);
     // 2 setup looper
     const urlParams = urlUtils.getUrlParams(location.href);
     const newTiming = 'new-timing' in urlParams || config.newTiming;
