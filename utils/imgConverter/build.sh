@@ -1,3 +1,3 @@
 set -xe
 
-gcc -o imgConverter src/main.c
+gcc -o imgConverter src/main.c -I./lib/include -lm
