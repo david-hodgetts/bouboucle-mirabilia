@@ -24,3 +24,26 @@ npm i
 ``` sh
 npm run dev
 ```
+
+
+## list of images
+- ?fg-url=Coloriage_Assiette-polaire.png
+- ?fg-url=Coloriage_Dionees.png
+- ?fg-url=Coloriage_Momotaro_0.png
+- ?fg-url=Coloriage_Perche-commune.png
+- ?fg-url=Coloriage_Tableau-scolaire.png
+- ?fg-url=Dionee_Attrape_Mouche.png
+- ?fg-url=Enfance_Traits_Gris.png
+- ?fg-url=Frankie.png
+- ?fg-url=Geneva_and_Mont_Blanc.png
+- ?fg-url=Glacial_Mountain.png
+- ?fg-url=Henriette_d_Angeville.png
+- ?fg-url=Le_Mont-Blanc___une_prouesse_photographique_.png
+- ?fg-url=Place_de_Geneve_Traits_Gris.png
+- ?fg-url=Portrait_d_Enfants_Traits_Gris.png
+- ?fg-url=Rythmique_Enfantine_Trait_Gris.png
+- ?fg-url=Sphinx_Tete_de_Mort.png
+- ?fg-url=St-Pierre_Echafaudage_de_la_fleche_Correction.png
+- ?fg-url=Tableau_Scolaire_Traits_Gris.png
+- ?fg-url=Vampire_Geant_Correction.png
+- ?fg-url=Vue_de_Geneve_et_du_Mont-Blanc.png
