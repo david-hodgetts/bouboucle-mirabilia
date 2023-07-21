@@ -74,17 +74,18 @@ load_and_scale_image(const char* filepath, int* width, int* height, int* compone
 }
 
 int main(int argc, char** args){
-    if(argc != 2){
-        puts("expects one argument, namely filepath of image to convert");
+    if(argc != 3){
+        puts("expects two arguments, namely filepath of image to convert, and filepath to ouput file (PNG file)");
         return 1;
     }
 
-    const char* filepath = args[1];
+    const char* inFilepath = args[1];
+    const char* outFilepath = args[2];
 
-    printf("image filepath %s\n", filepath);
+    printf("image filepath %s\n", inFilepath);
     
     int x,y,n;
-    unsigned char *inputPixels = load_and_scale_image(filepath, &x, &y, &n);
+    unsigned char *inputPixels = load_and_scale_image(inFilepath, &x, &y, &n);
     printf("%d x %d (%d components)\n", x, y, n);
 
 
@@ -107,19 +108,9 @@ int main(int argc, char** args){
         outBuffer[outIndex + 3] = 255 - red; // invert alpha
     } 
 
-    // hackety hack an output filepath
-    char outputFilepath[1024];
-    memcpy(outputFilepath, filepath, strlen(filepath));
-    const char* extension = ".png";
-    memcpy(outputFilepath + strlen(filepath), extension, strlen(extension));
-    outputFilepath[strlen(filepath) + strlen(extension)] = 0;
-
-    printf("output filename %s\n", outputFilepath);
-
-
-    int writeCount = stbi_write_png(outputFilepath, x, y, 4, outBuffer, 0);
+    int writeCount = stbi_write_png(outFilepath, x, y, 4, outBuffer, 0);
     if(writeCount == 0){
-        printf("write of png file to filepath %s failed\n", outputFilepath);
+        printf("write of png file to filepath %s failed\n", outFilepath);
         return 1;
     }
 
