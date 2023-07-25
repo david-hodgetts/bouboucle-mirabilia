@@ -18,3 +18,5 @@ OUT_DIR=../../public/
 ./imgConverter ${IN_DIR}Tableau_Scolaire_Traits_Gris.png ${OUT_DIR}Tableau_Scolaire_Traits_Gris.png
 ./imgConverter ${IN_DIR}Vampire_Géant_Correction.jpg ${OUT_DIR}Vampire_Geant_Correction.png
 ./imgConverter ${IN_DIR}Vue_de_Genève_et_du_Mont-Blanc.jpg ${OUT_DIR}Vue_de_Geneve_et_du_Mont-Blanc.png
+./imgConverter ${IN_DIR}Glacial_Mountain_recadree.png ${OUT_DIR}Glacial_Mountain_recadree.png
+./imgConverter ${IN_DIR}Frankie_recadree.png ${OUT_DIR}Frankie_recadree.png
