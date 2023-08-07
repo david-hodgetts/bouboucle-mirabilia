@@ -124,6 +124,7 @@ async function main(){
 
 
     const looper = makeLooper(looperConfig);
+    looper.setLineColor('#E1BEE7');
     looper.start();
     if (urlParams.gist) {
         io.gists.load(urlParams.gist, looper.importData);
