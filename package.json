@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@andreaskundig/looper": "^1.0.13",
-    "@andreaskundig/looper-ui": "^1.0.19",
+    "@andreaskundig/looper-ui": "^1.0.20",
     "gifshot": "^0.4.5",
     "paper": "^0.12.15"
   },
