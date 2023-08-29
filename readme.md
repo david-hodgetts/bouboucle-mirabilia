@@ -28,7 +28,6 @@ npm run dev
 
 ## list of images
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Coloriage_Assiette-polaire.png
-- https://bouboucle-dev.demainlalune.ch/?fg-url=Coloriage_Dionees.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Coloriage_Momotaro_0.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Coloriage_Perche-commune.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Coloriage_Tableau-scolaire.png
