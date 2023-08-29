@@ -1,7 +1,7 @@
 {
-  "name": "looper-ui-vite",
+  "name": "bouboucle-mirabilia",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,12 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@andreaskundig/looper": "^1.0.8",
-    "@andreaskundig/looper-ui": "^1.0.16",
+    "@andreaskundig/looper": "^1.0.13",
+    "@andreaskundig/looper-ui": "^1.0.20",
     "gifshot": "^0.4.5",
     "paper": "^0.12.15"
   },
   "devDependencies": {
-    "vite": "^3.2.3"
+    "@sveltejs/vite-plugin-svelte": "^2.0.0",
+    "@tsconfig/svelte": "^3.0.0",
+    "svelte": "^3.55.1",
+    "svelte-check": "^2.10.0",
+    "vite": "^4.0.0"
   }
 }
