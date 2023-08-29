@@ -46,5 +46,4 @@ npm run dev
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Tableau_Scolaire_Traits_Gris.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vampire_Geant_Correction.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vue_de_Geneve_et_du_Mont-Blanc.png
-
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Glacial_Mountain_recadree.png
