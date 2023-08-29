@@ -34,9 +34,8 @@ npm run dev
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Coloriage_Tableau-scolaire.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Dionee_Attrape_Mouche.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Enfance_Traits_Gris.png
-- https://bouboucle-dev.demainlalune.ch/?fg-url=Frankie.png
+- https://bouboucle-dev.demainlalune.ch/?fg-url=Frankie_recadree.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Geneva_and_Mont_Blanc.png
-- https://bouboucle-dev.demainlalune.ch/?fg-url=Glacial_Mountain.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Henriette_d_Angeville.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Le_Mont-Blanc___une_prouesse_photographique_.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Place_de_Geneve_Traits_Gris.png
@@ -48,5 +47,4 @@ npm run dev
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vampire_Geant_Correction.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vue_de_Geneve_et_du_Mont-Blanc.png
 
-- https://bouboucle-dev.demainlalune.ch/?fg-url=Frankie_recadree.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Glacial_Mountain_recadree.png
