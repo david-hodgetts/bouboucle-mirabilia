@@ -103,7 +103,7 @@ async function main(){
       urlParams['background-color'] || config.backgroundColor || '#ffffff';
     const showGallery = !!urlParams.gallery;
     const titleHeight = 79.67; // ui button row height (px)
-    const mirabiliaHeaderHeight = 79; // height of external mirabilia header height (px)
+    const mirabiliaHeaderHeight = 0; // height of external mirabilia header height (px)
     const fullSizeGif = !!urlParams['big-gif'];
     const foregroundUrl = extractForegroundUrl() || null;
     const { dimension, foregroundUrlIsValid } = await computeDimensionFromFgUrl(foregroundUrl, (titleHeight + mirabiliaHeaderHeight));
