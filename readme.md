@@ -54,3 +54,11 @@ Build artifacts are produced in folder named **dist**.
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vampire_Geant_Correction.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vue_de_Geneve_et_du_Mont-Blanc.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Glacial_Mountain_recadree.png
+
+## build options
+
+```sh
+$ vite build --base=/my/public/path/
+```
+
+More [info](https://vitejs.dev/guide/build.html)
