@@ -4,19 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>bouboucle Mirabilia</title>
-  </head>
-  <body>
-    <header>header Mirabilia</header>
-    <script type="module" src="/main.js"></script>
     <style>
-      header{
+      @font-face {
+        font-family: 'Poppins';
+        src: url('https://mirabilia.ch/themes/custom/mirabilia/fonts/poppins/Poppins-Regular.eot');
+        src: url('https://mirabilia.ch/themes/custom/mirabilia/fonts/poppins/Poppins-Regular.eot?#iefix') format('embedded-opentype'),
+          url('https://mirabilia.ch/themes/custom/mirabilia/fonts/poppins/Poppins-Regular.woff2') format('woff2'),
+          url('https://mirabilia.ch/themes/custom/mirabilia/fonts/poppins/Poppins-Regular.woff') format('woff'),
+          url('https://mirabilia.ch/themes/custom/mirabilia/fonts/poppins/Poppins-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+    
+      .font-poppins {
+        font-family: 'Poppins', sans-serif;
+        text-decoration: none;
+        color: #323232;
+      }
+    
+      .header {
         position: fixed;
+        font-size: 18px;
+        text-transform: uppercase;
         top: 0;
         left: 0;
         right: 0;
         height: 79px;
-        background-color: orange;
+        display: flex;
+        border-bottom: 1px solid #323232;
+        /* box-shadow: 1px 10px 15px rgba(0,0,0,0.14); */
+        z-index: 1;
+      }
+    
+      .logo {
+        background-color: #323232;
+        width: 80px;
+        position: relative;
+      }
+    
+      .logo-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    
+      .tools {
+        margin: 30px;
       }
     </style>
+  </head>
+  <body>
+    <div class="header">
+      <a href="https://mirabilia.ch/fr/page/les-visites-insolites" class="logo" title="Accueil">
+        <img src="https://mirabilia.ch/themes/custom/mirabilia/images/logo-xs.png" class="logo-img">
+      </a>
+      <div class="tools"><a href="https://mirabilia.ch/fr/page/les-visites-insolites" class="font-poppins" title="Accueil">&lt; Retourner sur Mirabilia</a></div>
+    </div>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
