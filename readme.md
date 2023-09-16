@@ -6,7 +6,7 @@ A bouboucle app instance for use on the site of the [mirabilia](https://mirabili
 ## Foreground image definition
 
 A foreground can be added to the canvas by specifying a url in a query parameter named **fg-url**.
-If the key is not present, a blank classic *bouboucle* canvas will be displayed.
+If no key is present, a blank classic *bouboucle* canvas will be displayed.
 
 ```
 https://somehost?fg-url=an_url_pointing_to_an_image
@@ -24,6 +24,14 @@ npm i
 ``` sh
 npm run dev
 ```
+
+## Build instructions
+
+``` sh
+npm run build
+```
+
+Build artifacts are produced in folder named **dist**.
 
 
 ## list of images
@@ -46,3 +54,11 @@ npm run dev
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vampire_Geant_Correction.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Vue_de_Geneve_et_du_Mont-Blanc.png
 - https://bouboucle-dev.demainlalune.ch/?fg-url=Glacial_Mountain_recadree.png
+
+## build options
+
+```sh
+$ vite build --base=/my/public/path/
+```
+
+More [info](https://vitejs.dev/guide/build.html)
