@@ -150,9 +150,9 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             const infoBox = new InfoBox({
                 target: infoMenuDiv,
             });
-            infoMenuDiv.addEventListener('click', function(){
-                menu.hideSubmenu();
-            });
+            // infoMenuDiv.addEventListener('click', function(){
+            //     menu.hideSubmenu();
+            // });
             menu.initShowSubmenu(infoMenuDiv, infoButtonDiv);
         },
 

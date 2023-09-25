@@ -1,3 +1,6 @@
+<script>
+  import Carousel from './Carousel.svelte';
+</script>
 <div class="backdrop">
     <div class="info-box">
         <h1>bouboucle mirabilia</h1>
@@ -14,16 +17,17 @@
                 <img src="/_icons/3_trait_3.svg" alt="" class="icon">
                 <div class="text">Définis la fréquence / longueur de la ligne</div>
             </div>
-            <div class="row">
-                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" class="icon">
-                <div class="text">Dessine!</div>
-            </div>
+            <!-- <div class="row"> -->
+            <!--     <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" class="icon"> -->
+            <!--     <div class="text">Dessine!</div> -->
+            <!-- </div> -->
             <div class="row">
                 <img src="/_icons/8_done.svg" alt="" class="icon">
                 <div class="text">Quand tu as terminé, télécharge ton animation</div>
             </div>
         </div>
     </div>
+    <Carousel />
 </div>
 
 <style>
