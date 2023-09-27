@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <img src="/_icons/3_trait_3.svg" alt="" class="icon">
-                <div class="text">Définis la fréquence / longueur de la ligne</div>
+                <div class="text">Définis la fréquence / durée de vie de la ligne</div>
             </div>
             <!-- <div class="row"> -->
             <!--     <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" class="icon"> -->
@@ -25,12 +25,17 @@
                 <img src="/_icons/8_done.svg" alt="" class="icon">
                 <div class="text">Quand tu as terminé, télécharge ton animation</div>
             </div>
+            <Carousel />
         </div>
     </div>
-    <Carousel />
 </div>
 
 <style>
+    :root {
+      --font-family: Arial, Helvetica, sans-serif;
+      --font-size: 23px;
+      --text-padding: 2px 0 0 20px;
+    }
     .backdrop{
         height: 100vh;
         background-color: white;
@@ -38,7 +43,7 @@
     .info-box{
         margin: 0 auto;
         max-width: 600px;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: var(--font-family);
     }
     .instructions{
         padding-top: 20px;
@@ -50,9 +55,8 @@
         display: flex;
     }
     .text{
-        padding-left: 20px;
-        font-size: 23px;
-        padding-top: 2px;
+        font-size: var(--font-size);
+        padding: var(--text-padding);
     }
     .icon{
         width: 27px;

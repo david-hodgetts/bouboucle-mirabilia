@@ -147,7 +147,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                 infoMenuDiv = document.querySelector('#info-submenu');
             // infoMenuDiv.innerHTML = infoContent;
 
-            const infoBox = new InfoBox({
+            new InfoBox({
                 target: infoMenuDiv,
             });
             // infoMenuDiv.addEventListener('click', function(){
