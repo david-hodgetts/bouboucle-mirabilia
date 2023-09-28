@@ -41,14 +41,12 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      scrollToSlide(nextSlideIndex);
  }
 
- onMount(() => {
-     console.log('mount');
-     slides.forEach((slide, index) => {
-         if (index === 0) {
-             slide.querySelector('video').play();
-         }
-     })
- });
+ // TODO fix autoplay for first video
+ // maybe set autoplay for first video, then disable it in scrollToSlide
+ // or call play on:loadstart
+ // or export a reset method and call it when info is shown?
+ // this doesn't work:
+ // onMount(() => slides[0].querySelector('video').play())
  // TODO improve css: margins around video, video next to text (responsive)
 </script>
 
