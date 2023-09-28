@@ -2,6 +2,8 @@
 https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javascript--cms-41734t
 -->
 <script>
+ import { onMount } from 'svelte';
+
  const slideVideos = [
      { title: 'Les choix possibles de fréquence / durée de vie',
        src: 'rythmes.webm' },
@@ -20,26 +22,37 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  let slidesContainer;
  let slides = [];
  let slideIndex = 0;
+ function scrollToSlide(index) {
+     const currentSlide = slides[slideIndex];
+     const slideWidth = currentSlide.clientWidth;
+     slideIndex = index;
+     const nextSlide = slides[slideIndex];
+     slidesContainer.scrollLeft = slideIndex * slideWidth;
+     currentSlide.querySelector('video').pause();
+     nextSlide.querySelector('video').play();
+ }
  function nextClick() {
      console.log('next',slideIndex)
-     const slide = slides[slideIndex];
-     const slideWidth = slide.clientWidth;
-     slideIndex = (slideIndex + 1) % slides.length
-     slidesContainer.scrollLeft = slideIndex * slideWidth;
+     const nextSlideIndex = (slideIndex + 1) % slides.length
+     scrollToSlide(nextSlideIndex);
  }
  function prevClick() {
      console.log('previous',slideIndex)
-     const slide = slides[slideIndex];
-     const slideWidth = slide.clientWidth;
      const firstIndex = slideIndex == 0
-     slideIndex = (firstIndex ? slides.length : slideIndex) - 1;
-     slidesContainer.scrollLeft = slideIndex * slideWidth;
+     const nextSlideIndex = (firstIndex ? slides.length : slideIndex) - 1;
+     scrollToSlide(nextSlideIndex);
  }
- // TODO set listener on each video that triggers nextClick
- // onMount https://learn.svelte.dev/tutorial/onmount
- // event ended https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/ended_event
- // TODO next/prevClick stops current video and restarts next one
- // https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+
+ onMount(() => {
+     console.log('mount');
+     slides.forEach((slide, index) => {
+         const video = slide.querySelector('video');
+         video.addEventListener('ended', nextClick)
+         if (index === 0) {
+             video.play();
+         }
+     })
+ });
  // TODO improve css: margins around video, video next to text (responsive)
 </script>
 
@@ -54,7 +67,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
     {#each slideVideos as slideVideo, i}
         <div class="slide" bind:this={slides[i]}>
             <p class="text">{slideVideo.title}</p>
-            <video controls >
+            <video controls>
                 <source src={`/videos/${slideVideo.src}`} type="video/webm" />
             </video>
         </div>
