@@ -32,12 +32,10 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      nextSlide.querySelector('video').play();
  }
  function nextClick() {
-     console.log('next',slideIndex)
      const nextSlideIndex = (slideIndex + 1) % slides.length
      scrollToSlide(nextSlideIndex);
  }
  function prevClick() {
-     console.log('previous',slideIndex)
      const firstIndex = slideIndex == 0
      const nextSlideIndex = (firstIndex ? slides.length : slideIndex) - 1;
      scrollToSlide(nextSlideIndex);
@@ -46,10 +44,8 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  onMount(() => {
      console.log('mount');
      slides.forEach((slide, index) => {
-         const video = slide.querySelector('video');
-         video.addEventListener('ended', nextClick)
          if (index === 0) {
-             video.play();
+             slide.querySelector('video').play();
          }
      })
  });
@@ -67,7 +63,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
     {#each slideVideos as slideVideo, i}
         <div class="slide" bind:this={slides[i]}>
             <p class="text">{slideVideo.title}</p>
-            <video controls>
+            <video controls on:ended={nextClick}>
                 <source src={`/videos/${slideVideo.src}`} type="video/webm" />
             </video>
         </div>
