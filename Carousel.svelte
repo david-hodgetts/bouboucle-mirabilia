@@ -26,10 +26,8 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      const currentSlide = slides[slideIndex];
      const slideWidth = currentSlide.clientWidth;
      slideIndex = index;
-     const nextSlide = slides[slideIndex];
-     slidesContainer.scrollLeft = slideIndex * slideWidth;
-     currentSlide.querySelector('video').pause();
-     nextSlide.querySelector('video').play();
+     // + 1 is a hack to make intersection detection work :(
+     slidesContainer.scrollLeft = slideIndex * slideWidth + 1;
  }
  function nextClick() {
      const nextSlideIndex = (slideIndex + 1) % slides.length
@@ -41,12 +39,29 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      scrollToSlide(nextSlideIndex);
  }
 
- // TODO fix autoplay for first video
- // maybe set autoplay for first video, then disable it in scrollToSlide
- // or call play on:loadstart
- // or export a reset method and call it when info is shown?
- // this doesn't work:
- // onMount(() => slides[0].querySelector('video').play())
+ function handleIntersection(entries, observer) {
+     entries.forEach(({isIntersecting, target}) => {
+         const video = target;
+         // console.log('inters', isIntersecting,
+         //             target.children[0].src.split('/')[4]);
+         if(isIntersecting) {
+             video.currentTime = 0;
+             video.play();
+         } else {
+             video.pause();
+         }
+     })
+ }
+
+ onMount(() => {
+     const observer = new IntersectionObserver(handleIntersection);
+     const unobserves = slides.map(slide => {
+         const video = slide.querySelector('video');
+         observer.observe(video);
+         return () => observer.unobserve(video);
+     })
+     return () => unobserves.forEach(uo => uo());
+ })
  // TODO improve css: margins around video, video next to text (responsive)
 </script>
 
