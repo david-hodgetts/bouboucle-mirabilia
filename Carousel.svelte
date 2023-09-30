@@ -41,15 +41,10 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 
  function handleIntersection(entries, observer) {
      entries.forEach(({isIntersecting, target}) => {
-         const video = target;
          // console.log('inters', isIntersecting,
          //             target.children[0].src.split('/')[4]);
-         if(isIntersecting) {
-             video.currentTime = 0;
-             video.play();
-         } else {
-             video.pause();
-         }
+         target.currentTime = 0;
+         isIntersecting ? target.play() : target.pause();
      })
  }
 
