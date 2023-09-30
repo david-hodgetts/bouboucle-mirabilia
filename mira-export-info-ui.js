@@ -147,6 +147,9 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
                 infoMenuDiv = document.querySelector('#info-submenu');
             // infoMenuDiv.innerHTML = infoContent;
 
+            infoMenuDiv.style.height = 'auto';
+            infoMenuDiv.style.bottom = 0;
+            infoMenuDiv.style.overflowY = 'auto';
             new InfoBox({
                 target: infoMenuDiv,
             });

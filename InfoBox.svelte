@@ -37,7 +37,7 @@
       --text-padding: 2px 0 0 20px;
     }
     .backdrop{
-        height: 100vh;
+        /* height: 100vh; */
         background-color: white;
     }
     .info-box{

@@ -89,7 +89,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  }
 
  .slider-wrapper {
-     margin: 1rem;
+     /* margin: 1rem; */
      position: relative;
      overflow: hidden;
  }
