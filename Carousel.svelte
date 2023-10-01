@@ -101,7 +101,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      overflow: scroll;
      scroll-behavior: smooth;
      list-style: none;
-     margin: 15px;
+     margin: 0 15px ;
      padding: 0;
  }
 
