@@ -26,8 +26,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      const currentSlide = slides[slideIndex];
      const slideWidth = currentSlide.clientWidth;
      slideIndex = index;
-     // + 1 is a hack to make intersection detection work :(
-     slidesContainer.scrollLeft = slideIndex * slideWidth + 1;
+     slidesContainer.scrollLeft = slideIndex * slideWidth;
  }
  function nextClick() {
      const nextSlideIndex = (slideIndex + 1) % slides.length
@@ -41,7 +40,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 
  function handleIntersection(entries, observer) {
      entries.forEach(({isIntersecting, target}) => {
-         // console.log('inters', isIntersecting,
+         // console.log('itrs', isIntersecting,
          //             target.children[0].src.split('/')[4]);
          target.currentTime = 0;
          isIntersecting ? target.play() : target.pause();
@@ -49,7 +48,8 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  }
 
  onMount(() => {
-     const observer = new IntersectionObserver(handleIntersection);
+     const observer = new IntersectionObserver(handleIntersection,
+                                               {threshold: 0.05});
      const unobserves = slides.map(slide => {
          const video = slide.querySelector('video');
          observer.observe(video);
@@ -120,6 +120,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      cursor: pointer;
      opacity: 0.5;
      transition: opacity 100ms;
+     z-index: 1;
  }
 
  .slide-arrow:hover,
