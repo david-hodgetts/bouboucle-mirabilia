@@ -95,6 +95,9 @@ async function main(){
         "export-button",
     ];
     setupDomForVariant(variant, undefined, mirabiliaButtonOrder);
+    const mql = window.matchMedia("only screen and (min-width: 320px) and (max-width: 850px)");
+    const isMobile = mql.matches;
+
     // 2 setup looper
     const urlParams = urlUtils.getUrlParams(location.href);
     const newTiming = 'new-timing' in urlParams || config.newTiming;
@@ -103,10 +106,12 @@ async function main(){
       urlParams['background-color'] || config.backgroundColor || '#ffffff';
     const showGallery = !!urlParams.gallery;
     const titleHeight = 79.67; // ui button row height (px)
-    const mirabiliaHeaderHeight = 79; // height of external mirabilia header height (px)
+    // height of external mirabilia header height (px)
+    const mirabiliaHeaderHeight = isMobile ?  0 : 79;
     const fullSizeGif = !!urlParams['big-gif'];
     const foregroundUrl = extractForegroundUrl() || null;
-    const { dimension, foregroundUrlIsValid } = await computeDimensionFromFgUrl(foregroundUrl, (titleHeight + mirabiliaHeaderHeight));
+    const { dimension, foregroundUrlIsValid } =
+          await computeDimensionFromFgUrl(foregroundUrl, (titleHeight + mirabiliaHeaderHeight));
     const graphics = {
         canvas: document.getElementById('main-canvas'),
         paper: paper,
@@ -142,7 +147,7 @@ async function main(){
     });
 
     addTopPadding(mirabiliaHeaderHeight, titleHeight);
-    
+
     // TODO: improve
     // force scale to setup correct first frame display
     looper.scale({

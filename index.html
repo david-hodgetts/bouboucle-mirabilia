@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>bouboucle Mirabilia</title>
     <style>
+     :root{
+       --mirabilia-header-height: 79px;
+       --title-height: 79.67px;
+     }
       @font-face {
         font-family: 'Poppins';
         src: url('https://mirabilia.ch/themes/custom/mirabilia/fonts/poppins/Poppins-Regular.eot');
@@ -49,9 +53,15 @@
         transform: translate(-50%, -50%);
       }
     
-      .tools {
+     .tools {
         margin: 30px;
       }
+
+     @media only screen and (min-width: 320px) and (max-width: 850px) {
+       .header {
+         display: none;
+       }
+     }
     </style>
   </head>
   <body>
@@ -59,7 +69,8 @@
       <a href="https://mirabilia.ch/fr/page/les-visites-insolites" class="logo" title="Accueil">
         <img src="https://mirabilia.ch/themes/custom/mirabilia/images/logo-xs.png" class="logo-img">
       </a>
-      <div class="tools"><a href="https://mirabilia.ch/fr/page/les-visites-insolites" class="font-poppins" title="Accueil">&lt; Retourner sur Mirabilia</a></div>
+      <div class="tools"><a href="https://mirabilia.ch/fr/page/les-visites-insolites"
+                            class="font-poppins" title="Accueil">&lt; Retourner sur Mirabilia</a></div>
     </div>
     <script type="module" src="/main.js"></script>
   </body>

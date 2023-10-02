@@ -3,7 +3,6 @@
 </script>
 <div class="backdrop">
     <div class="info-box">
-        <h1>bouboucle mirabilia</h1>
         <div class="instructions">
             <div class="row">
                 <img src="/_icons/1_couleur+2_taille_5.svg" alt="" class="icon">

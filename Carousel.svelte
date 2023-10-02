@@ -5,7 +5,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  import { onMount } from 'svelte';
 
  const slideVideos = [
-     { title: 'Les choix possibles de fréquence / durée de vie',
+     { title: 'Choisir la combinaison fréquence / durée de vie',
        src: 'rythmes.webm' },
      { title: 'Dessiner plus vite allonge les traits',
        src: 'vitesses.webm' },
@@ -98,10 +98,10 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
      /* height: calc(100vh - 2rem); */
      width: 100%;
      display: flex;
-     overflow: scroll;
+     overflow: hidden;
      scroll-behavior: smooth;
      list-style: none;
-     margin: 0 15px ;
+     /* margin: 0 15px ; */
      padding: 0;
  }
 
