@@ -152,11 +152,19 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             infoMenuDiv.style.overflowY = 'auto';
             new InfoBox({
                 target: infoMenuDiv,
+                props: {
+                    menu: menu,
+                }
             });
             // infoMenuDiv.addEventListener('click', function(){
             //     menu.hideSubmenu();
             // });
             menu.initShowSubmenu(infoMenuDiv, infoButtonDiv);
+
+            return {
+                infoMenuDiv,
+                infoButtonDiv,
+            }
         },
 
         init = function(menu, looper, fullSizeGif){

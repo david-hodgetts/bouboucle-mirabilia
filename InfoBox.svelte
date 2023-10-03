@@ -1,7 +1,14 @@
 <script>
-  import Carousel from './Carousel.svelte';
+    import Carousel from './Carousel.svelte';
+
+    export let menu;
+
+    function hide(){
+        menu.hideSubmenu();
+    }
 </script>
-<div class="backdrop">
+<div class="backdrop" on:click={hide} on:keypress={() => null}>
+    <button class="close-button" on:click={hide}><img src="/images/close.svg" alt="close button"></button>
     <div class="info-box">
         <div class="instructions">
             <div class="row">
@@ -36,8 +43,9 @@
       --text-padding: 2px 0 0 20px;
     }
     .backdrop{
-        /* height: 100vh; */
+        height: 100vh;
         background-color: white;
+        z-index: 100;
     }
     .info-box{
         margin: 0 auto;
@@ -59,5 +67,28 @@
     }
     .icon{
         width: 27px;
+    }
+    .close-button{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 0;
+        border: none;
+        background: none;
+        width: 40px;
+        height: 40px;
+    }
+
+    @media only screen and (min-width: 320px) and (max-width: 850px) {
+       .close-button {
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+       }
+     }
+    .close-button img{
+        width: 100%;
+        height: 100%;
     }
 </style>
