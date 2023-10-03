@@ -161,15 +161,14 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             // });
             menu.initShowSubmenu(infoMenuDiv, infoButtonDiv);
 
-            return {
-                infoMenuDiv,
-                infoButtonDiv,
-            }
+            return infoButtonDiv;
+            
         },
 
         init = function(menu, looper, fullSizeGif){
             initExportButton(looper, menu, fullSizeGif);
-            initInfoButton(menu);
+            const infoButton = initInfoButton(menu);
+            infoButton.click();
         };
     init(menu, looper, fullSizeGif);
 };
