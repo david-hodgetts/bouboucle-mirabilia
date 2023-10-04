@@ -61,10 +61,10 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 </script>
 
 <div class="slider-wrapper">
-  <button class="slide-arrow" id="slide-arrow-prev" on:click={prevClick}>
+  <button class="slide-arrow" id="slide-arrow-prev" on:click|stopPropagation={prevClick}>
     &#8249;
   </button>
-  <button class="slide-arrow" id="slide-arrow-next" on:click={nextClick}>
+  <button class="slide-arrow" id="slide-arrow-next" on:click|stopPropagation={nextClick}>
     &#8250;
   </button>
   <div class="slides-container" bind:this={slidesContainer}>

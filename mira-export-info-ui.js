@@ -165,10 +165,29 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             
         },
 
+        firstTimeOpened = function(){
+            try{
+                const result = localStorage.getItem("_bouboucle_first_open");
+                return ! (!!result);
+            }catch(e){
+                return true;
+            }
+        },
+        
+        setSiteWasOpened = function(){
+            try{
+                localStorage.setItem("_bouboucle_first_open", "true");
+            }catch(e){
+            }
+        },
+
         init = function(menu, looper, fullSizeGif){
             initExportButton(looper, menu, fullSizeGif);
             const infoButton = initInfoButton(menu);
-            infoButton.click();
+            if(firstTimeOpened()){
+                infoButton.click();
+                setSiteWasOpened();
+            }
         };
     init(menu, looper, fullSizeGif);
 };

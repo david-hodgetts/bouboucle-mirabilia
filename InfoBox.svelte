@@ -3,11 +3,13 @@
 
     export let menu;
 
-    function hide(){
+    function hide(e){
+        console.log(e);
         menu.hideSubmenu();
     }
 </script>
 <div class="backdrop" on:click={hide} on:keypress={() => null}>
+</div>
     <button class="close-button" on:click={hide}><img src="/images/close.svg" alt="close button"></button>
     <div class="info-box">
         <div class="instructions">
@@ -34,7 +36,7 @@
             <Carousel />
         </div>
     </div>
-</div>
+<!-- </div> -->
 
 <style>
     :root {
@@ -43,13 +45,20 @@
       --text-padding: 2px 0 0 20px;
     }
     .backdrop{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
         height: 100vh;
         background-color: white;
-        z-index: 100;
+        z-index: 0;
     }
     .info-box{
+        position: relative;
         margin: 0 auto;
         max-width: 600px;
+        height: 100%;
+        color: black;
         font-family: var(--font-family);
     }
     .instructions{
