@@ -71,15 +71,11 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
     {#each slideVideos as slideVideo, i}
         <div class="slide" bind:this={slides[i]}>
             <p class="text">{slideVideo.title}</p>
-            <video controls on:ended={nextClick}>
+            <video controls muted on:ended={nextClick}>
                 <source src={`/videos/${slideVideo.src}`} type="video/webm" />
             </video>
         </div>
     {/each}
-    <div class="slide">
-    </div>
-    <div class="slide">
-    </div>
   </div>
 </div>
 
@@ -90,8 +86,8 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 
  .slider-wrapper {
      /* margin: 1rem; */
-     position: relative;
-     overflow: hidden;
+     position: relative;    
+     /* overflow: hidden; */
  }
 
  .slides-container {
@@ -108,6 +104,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  .slide-arrow {
      position: absolute;
      display: flex;
+     /* top:70%; */
      top: 0;
      bottom: 0;
      margin: auto;
