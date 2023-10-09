@@ -22,41 +22,44 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
  let slidesContainer;
  let slides = [];
  let slideIndex = 0;
+ 
  function scrollToSlide(index) {
-     const currentSlide = slides[slideIndex];
-     const slideWidth = currentSlide.clientWidth;
-     slideIndex = index;
-     slidesContainer.scrollLeft = slideIndex * slideWidth;
+    const currentSlide = slides[slideIndex];
+    const slideWidth = currentSlide.clientWidth;
+    slideIndex = index;
+    slidesContainer.scrollLeft = slideIndex * slideWidth;
  }
+
  function nextClick() {
-     const nextSlideIndex = (slideIndex + 1) % slides.length
-     scrollToSlide(nextSlideIndex);
+    const nextSlideIndex = (slideIndex + 1) % slides.length
+    scrollToSlide(nextSlideIndex);
  }
+
  function prevClick() {
-     const firstIndex = slideIndex == 0
-     const nextSlideIndex = (firstIndex ? slides.length : slideIndex) - 1;
-     scrollToSlide(nextSlideIndex);
+    const firstIndex = slideIndex == 0
+    const nextSlideIndex = (firstIndex ? slides.length : slideIndex) - 1;
+    scrollToSlide(nextSlideIndex);
  }
 
  function handleIntersection(entries, observer) {
-     entries.forEach(({isIntersecting, target}) => {
+    entries.forEach(({isIntersecting, target}) => {
          // console.log('itrs', isIntersecting,
          //             target.children[0].src.split('/')[4]);
-         target.currentTime = 0;
-         isIntersecting ? target.play() : target.pause();
-     })
+        target.currentTime = 0;
+        isIntersecting ? target.play() : target.pause();
+    });
  }
 
  onMount(() => {
-     const observer = new IntersectionObserver(handleIntersection,
+    const observer = new IntersectionObserver(handleIntersection,
                                                {threshold: 0.05});
-     const unobserves = slides.map(slide => {
-         const video = slide.querySelector('video');
-         observer.observe(video);
-         return () => observer.unobserve(video);
-     })
-     return () => unobserves.forEach(uo => uo());
- })
+    const unobserves = slides.map(slide => {
+        const video = slide.querySelector('video');
+        observer.observe(video);
+        return () => observer.unobserve(video);
+    });
+    return () => unobserves.forEach(uo => uo());
+ });
  // TODO improve css: margins around video, video next to text (responsive)
 </script>
 
@@ -70,7 +73,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
   <div class="slides-container" bind:this={slidesContainer}>
     {#each slideVideos as slideVideo, i}
         <div class="slide" bind:this={slides[i]}>
-            <p class="text">{slideVideo.title}</p>
+            <p class="text"><b>{slideVideo.title}</b></p>
             <video controls muted playsinline on:ended={nextClick}>
                 <source src={`/videos/${slideVideo.src}`} type="video/mp4" />
             </video>
@@ -86,68 +89,68 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 
  .slider-wrapper {
      /* margin: 1rem; */
-     position: relative;    
+    position: relative;    
      /* overflow: hidden; */
  }
 
  .slides-container {
      /* height: calc(100vh - 2rem); */
-     width: 100%;
-     display: flex;
-     overflow: hidden;
-     scroll-behavior: smooth;
-     list-style: none;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    list-style: none;
      /* margin: 0 15px ; */
-     padding: 0;
+    padding: 0;
  }
 
  .slide-arrow {
-     position: absolute;
-     display: flex;
+    position: absolute;
+    display: flex;
      /* top:70%; */
-     top: 0;
-     bottom: 0;
-     margin: auto;
-     height: 4rem;
-     background-color: white;
-     border: none;
-     width: 2rem;
-     font-size: 3rem;
-     padding: 0;
-     cursor: pointer;
-     opacity: 0.5;
-     transition: opacity 100ms;
-     z-index: 1;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 4rem;
+    background-color: white;
+    border: none;
+    width: 2rem;
+    font-size: 3rem;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 100ms;
+    z-index: 1;
  }
 
  .slide-arrow:hover,
  .slide-arrow:focus {
-     opacity: 0.75;
-     background-color: #bfbfbf;
+    opacity: 0.75;
+    background-color: #bfbfbf;
  }
 
  #slide-arrow-prev {
-     left: 0;
-     padding-left: 0.25rem;
-     border-radius: 0 2rem 2rem 0;
+    left: 0;
+    padding-left: 0.25rem;
+    border-radius: 0 2rem 2rem 0;
  }
 
  #slide-arrow-next {
-     right: 0;
-     padding-left: 0.75rem;
-     border-radius: 2rem 0 0 2rem;
+    right: 0;
+    padding-left: 0.75rem;
+    border-radius: 2rem 0 0 2rem;
  }
 
  .slide {
-     width: 100%;
-     height: 100%;
-     flex: 1 0 100%;
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
  }
 
  .slide > video {
-     width: 100%;
+    width: 100%;
  }
  .text{
-     font-size: var(--font-size);
+    font-size: var(--font-size);
  }
 </style>
