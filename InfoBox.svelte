@@ -1,8 +1,7 @@
 <script>
     import Carousel from './Carousel.svelte';
-
     export let menu;
-
+    
     function hide(e){
         console.log(e);
         menu.hideSubmenu();
@@ -86,6 +85,7 @@
         background: none;
         width: 40px;
         height: 40px;
+        z-index: 1000;
     }
 
     @media only screen and (min-width: 320px) and (max-width: 850px) {

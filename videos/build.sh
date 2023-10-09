@@ -7,7 +7,7 @@ for filename in "${arr[@]}"
 do
     source="${filename}.mkv"
     # cropped="${filename}.cropped.mp4";
-    final="${filename}.webm"
+    final="${filename}.mp4"
     # original res = 725 x 532
     # cropped res = 725 x 462
     ffmpeg -y -i "$source" -filter:v crop=752:462:0:70 "$final"

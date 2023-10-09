@@ -6,19 +6,19 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 
  const slideVideos = [
      { title: 'Choisir la combinaison fréquence / durée de vie',
-       src: 'rythmes.webm' },
+       src: 'rythmes.mp4' },
      { title: 'Dessiner plus vite allonge les traits',
-       src: 'vitesses.webm' },
+       src: 'vitesses.mp4' },
      { title: 'Mettre en pause pour dessiner des traits qui clignotent',
-       src: 'explosion.webm' },
+       src: 'explosion.mp4' },
      { title: "Ceci est dessiné d'un seul long trait",
-       src: 'etoile.webm' },
+       src: 'etoile.mp4' },
      { title: 'Ceci est dessiné avec beaucoup de traits courts',
-       src: 'vagues-reculent.webm' },
+       src: 'vagues-reculent.mp4' },
      { title: 'Varier les couleurs',
-       src: 'arc-en-ciel.webm' },
+       src: 'arc-en-ciel.mp4' },
      { title: 'Varier la vitesse de dessin',
-       src: 'chenille-clignotante.webm' }];
+       src: 'chenille-clignotante.mp4' }];
  let slidesContainer;
  let slides = [];
  let slideIndex = 0;
@@ -71,8 +71,8 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
     {#each slideVideos as slideVideo, i}
         <div class="slide" bind:this={slides[i]}>
             <p class="text">{slideVideo.title}</p>
-            <video controls muted on:ended={nextClick}>
-                <source src={`/videos/${slideVideo.src}`} type="video/webm" />
+            <video controls muted playsinline on:ended={nextClick}>
+                <source src={`/videos/${slideVideo.src}`} type="video/mp4" />
             </video>
         </div>
     {/each}
