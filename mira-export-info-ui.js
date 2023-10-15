@@ -1,5 +1,6 @@
 import { getAssetString } from '@andreaskundig/looper-ui';
-import InfoBox from './InfoBox.svelte'
+import InfoBox from './InfoBox.svelte';
+
 export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
 
     const download_10 = getAssetString('10_download.svg');
@@ -150,10 +151,13 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
             infoMenuDiv.style.height = 'auto';
             infoMenuDiv.style.bottom = 0;
             infoMenuDiv.style.overflowY = 'auto';
+
+            const basePath = import.meta.env.BASE_URL == '/' ? "" : import.meta.env.BASE_URL;
             new InfoBox({
                 target: infoMenuDiv,
                 props: {
                     menu: menu,
+                    basePath: basePath,
                 }
             });
             // infoMenuDiv.addEventListener('click', function(){

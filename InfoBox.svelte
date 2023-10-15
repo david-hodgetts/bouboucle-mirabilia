@@ -1,27 +1,29 @@
 <script>
     import Carousel from './Carousel.svelte';
     export let menu;
+    export let basePath;
     
     function hide(e){
         console.log(e);
         menu.hideSubmenu();
     }
 </script>
+
 <div class="backdrop" on:click={hide} on:keypress={() => null}>
 </div>
-    <button class="close-button" on:click={hide}><img src="/images/close.svg" alt="close button"></button>
+    <button class="close-button" on:click={hide}><img src={`${basePath}/images/close.svg`} alt="close button"></button>
     <div class="info-box">
         <div class="instructions">
             <div class="row">
-                <img src="/_icons/1_couleur+2_taille_5.svg" alt="" class="icon">
+                <img src={`${basePath}/_icons/1_couleur+2_taille_5.svg`} alt="" class="icon">
                 <div class="text">Choisis ta couleur</div>
             </div>
             <div class="row">
-                <img src="/_icons/2_taille_3.svg" alt="" class="icon">
+                <img src={`${basePath}/_icons/2_taille_3.svg`} alt="" class="icon">
                 <div class="text">Fixe l'épaisseur de ton trait</div>
             </div>
             <div class="row">
-                <img src="/_icons/3_trait_3.svg" alt="" class="icon">
+                <img src={`${basePath}/_icons/3_trait_3.svg`} alt="" class="icon">
                 <div class="text">Définis la fréquence / durée de vie de la ligne</div>
             </div>
             <!-- <div class="row"> -->
@@ -29,10 +31,10 @@
             <!--     <div class="text">Dessine!</div> -->
             <!-- </div> -->
             <div class="row">
-                <img src="/_icons/8_done.svg" alt="" class="icon">
+                <img src={`${basePath}/_icons/8_done.svg`} alt="" class="icon">
                 <div class="text">Quand tu as terminé, télécharge ton animation</div>
             </div>
-            <Carousel />
+            <Carousel basePath={basePath} />
         </div>
     </div>
 <!-- </div> -->

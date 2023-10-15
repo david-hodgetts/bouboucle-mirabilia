@@ -4,6 +4,8 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
 <script>
  import { onMount } from 'svelte';
 
+ export let basePath;
+
  const slideVideos = [
      { title: 'Choisir la combinaison fréquence / durée de vie',
        src: 'rythmes.mp4' },
@@ -75,7 +77,7 @@ https://webdesign.tutsplus.com/how-to-build-a-simple-carousel-with-vanilla-javas
         <div class="slide" bind:this={slides[i]}>
             <p class="text"><b>{slideVideo.title}</b></p>
             <video controls muted playsinline on:ended={nextClick}>
-                <source src={`/videos/${slideVideo.src}`} type="video/mp4" />
+                <source src={`${basePath}/videos/${slideVideo.src}`} type="video/mp4" />
             </video>
         </div>
     {/each}
