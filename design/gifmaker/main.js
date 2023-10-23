@@ -1,15 +1,24 @@
 const sharp = require('sharp');
 
-async function processImage(imageBasename, imageIndex){
+const frameOffset = 66; // this frame should have number 0;
+
+async function processImage(imageBasename, imageIndex, sequenceLength){
+
 
     const imagepath = `${imageBasename}.${imageIndex.toString().padStart(3, '0')}`;
-    const outputImagepath = `./output/output.${imageIndex.toString().padStart(3, '0')}.png`;
+    
+    let adjustedIndex = imageIndex - frameOffset;
+    if(adjustedIndex < 0){
+        adjustedIndex = sequenceLength + adjustedIndex;
+    }
+    console.log(`index ${imageIndex} adjustedIndex ${adjustedIndex}`);
+    const outputImagepath = `./output/output.${adjustedIndex.toString().padStart(3, '0')}.png`;
     const image = sharp(imagepath);
     const meta = await image.metadata();
 
     const width = meta.width;
     const height = meta.height;
-    console.log("w x h", width, height);
+    // console.log("w x h", width, height);
 
     image
     .extract({
@@ -19,7 +28,7 @@ async function processImage(imageBasename, imageIndex){
         height: 107,
     })
     .extend({
-            left: 460,
+            left: 770,
             right: 10,
             top: 0,
             bottom: 0,
@@ -30,14 +39,14 @@ async function processImage(imageBasename, imageIndex){
                 alpha: 255,
             }
         })
-    .composite([{ input: './images/logo_mirabilia_x_smaller.png', gravity: 'west'}])
+    .composite([{ input: './images/logo_mirabilia_familia_x_smaller.png', gravity: 'west'}])
     .toFile(outputImagepath, (err, info) => {
         if (err) {
             console.error(err);
         }
-        if (info) {
-            console.log(info);
-        }
+        // if (info) {
+        //     console.log(info);
+        // }
     });
 
 }
@@ -47,7 +56,7 @@ async function main(){
     const sequenceLength = 120;
 
     for(let i = 0; i < sequenceLength; i++){
-        await processImage(imageBasename, i);
+        await processImage(imageBasename, i, sequenceLength);
     }
 }
 
