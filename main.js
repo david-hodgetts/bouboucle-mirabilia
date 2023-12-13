@@ -135,8 +135,11 @@ async function main(){
         io.gists.load(urlParams.gist, looper.importData);
     }
 
+    function makeExportAndInfoUi(menu, looper) {
+        miraMakeExportAndInfoUi(menu, looper, undefined, fullSizeGif)
+    }
     makeUI(variant, looper, fullSizeGif, newTiming, dimension,
-           showGallery, miraMakeExportAndInfoUi);
+           showGallery, makeExportAndInfoUi);
 
     window.addEventListener('resize', () => {
         looper.scale({

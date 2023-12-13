@@ -38,67 +38,119 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
     //     '</div>'
     // ].join('\n'),
     //
-    const infoCSS = `
-        .submenu .info {
-            font: 21px arial, sans-serif;
-            text-align: center;
-            line-height:130%;
-            padding-top: 40px;
-            bottom: 0;
-        }
-        .submenu div {
-            line-height: normal;
-        }
-        .info p{
-            margin: 6px;
-        }
-        .info div {
-            margin-bottom: 40px;
-        }
-        .info-fr, .info-de {
-            font-weight: bold;
-        }
-        .info-en {
-            font-style: italic;
-        }
-        .info .link {
-            color: rgb(77, 208, 225);
-            text-decoration: none;
-        }
+    const infoExportCSS = `
+    #info-submenu {
+        height: auto;
+        bottom: 0;
+        overflow-y: scroll;
+    }
+    .infobox {
+        position: relative;
+        margin: 0 auto;
+        max-width: 600px;
+        color: black;
+        font-family: var(--font-family);
+        /*  remove calc when we're no longer using
+            the other font-size declaration
+            and we can add 2px to --font-size itself
+        font-size: calc(2px + var(--font-size));
+        font-weight: bold;
+        */
+        font-size: var(--font-size);
+    }
+    .infobox_centered {
+        text-align: center;
+    }
+    .export-dialog__row {
+        margin-top: 20px;
+        line-height: normal;
+    }
+    .export-dialog__text {
+        margin-top: 30px;
+    }
+    .export-dialog__button {
+        display: inline-block;
+        margin-left: 50px ;
+        margin-right: 50px ;
+    }
+    .export-dialog__button:active{
+        background-color: #bbbbbb;
+    }
+    .export-dialog__progbar{
+        width: 500px;
+        background-color: darkGrey;
+        margin-right:  auto;
+        margin-left:  auto;
+    }
+    .export-dialog__progbar > div{
+        height: 10px;
+        background-color: darkCyan;
+    }
+    .export-dialog__gif {
+        border: 1px solid #dddddd;
+    }
+    .text__paragraph{
+        line-height: 130%;
+        margin: 6px;
+    }
+    .text__link {
+        color: rgb(77, 208, 225);
+        text-decoration: none;
+    }
+    .instructions{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+    .instructions__row{
+        display: flex;
+        line-height: normal;
+    }
+    .instructions__icon {
+        width: 27px;
+    }
+    .instructions__text {
+        padding: 2px 0 0 20px;
+    }
         `;
 
-    var exportContent = [
-            ' <div class="export-1 info">',
-            '   <div class="info-fr no-gist">',
-            '     <p>Veux-tu générer un gif?</p>',
-            '   </div>',
-            '   <div class="dialog-buttons gist no-gist">',
-            `    <div id="export-cancel-button"><img src="${erase_4}">`,
-            // '    <div id="export-cancel-button"><img src="icons/4_erase.svg">',
-            '    </div><div id="export-ok-button">',
-            `         <img src="${done_8}"></div>`,
-            // '         <img src="icons/8_done.svg"></div>',
-            '   </div>',
-            ' </div>',
-            ' <div class="export-2 info">',
-            '   <div class="info-fr no-gist">',
-            '     <p>Un instant</p>',
-            '   </div>',
-            '  <div id="gif-progress-bar" class="gist no-gist"><div></div></div></div>',
-            ' <div class="export-3 info" >',
-            '   <div class="info-fr no-gist">',
-            '     <p>Voilà</p> ',
-            '   </div>',
-            '   <div class="gist no-gist">',
-            '     <div><img id="gif"></img></div>',
-            '     <div><a download="bouboucle.gif" id="gif-download">',
-            `             <img src="${download_10}"></div>`,
-            // '            <img src="icons/10_download.svg"></div>',
-            '   </div>',
-            ' </div>',
-        ].join('\n'),
+    const exportContent = `
+         <div class="export-1 infobox infobox_centered">
+           <div class="no-gist export-dialog__row">
+             <p>Veux-tu générer un gif?</p>
+           </div>
+           <div class="gist no-gist export-dialog__row">
+            <div id="export-cancel-button" class="export-dialog__button">
+                <img src="${erase_4}">
+            </div>
+            <div id="export-ok-button" class="export-dialog__button">
+                 <img src="${done_8}"></div>
+           </div>
+         </div>
+         <div class="export-2 infobox infobox_centered">
+           <div class="no-gist export-dialog__row">
+             <p>Un instant</p>
+           </div>
+          <div id="gif-progress-bar"
+               class="gist no-gist export-dialog__row export-dialog__progbar"><div></div></div></div>
+         <div class="export-3 infobox infobox_centered" >
+           <div class="no-gist export-dialog__row ">
+             <p class="export-dialog__text">Voilà</p>
+           </div>
+           <div class="gist no-gist export-dialog__row">
+             <div><img id="gif" class="export-dialog__gif"></img></div>
+             <div class="export-dialog__button">
+               <a download="bouboucle.gif" id="gif-download">
+                     <img src="${download_10}">
+               </a>
+             </div>
+           </div>
+         </div>
+`;
 
-        showElements = function(parentSelector, showClass){
+        var showElements = function(parentSelector, showClass){
             document.querySelector(parentSelector)
                 .childNodes
                 .forEach(function(e){
@@ -215,7 +267,7 @@ export default function makeExportAndInfoUi(menu, looper, io, fullSizeGif){
         },
 
         init = function(menu, looper, fullSizeGif){
-            injectCSS(infoCSS);
+            injectCSS(infoExportCSS);
             initExportButton(looper, menu, fullSizeGif);
             const infoButton = initInfoButton(menu);
             if(firstTimeOpened()){
