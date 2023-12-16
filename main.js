@@ -1,8 +1,7 @@
-import  { makeUI, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
+import  { makeSimpleUi, setupDomForVariant, UIVariant } from '@andreaskundig/looper-ui';
 import { io, urlUtils, makeLooper } from '@andreaskundig/looper';
 import miraMakeExportAndInfoUi from './mira-export-info-ui.js'; // ??
 import paper from 'paper/dist/paper-core';
-
 
 console.log(`bouboucle mirabilia version ${__APP_VERSION__}`);
 
@@ -138,8 +137,8 @@ async function main(){
     function makeExportAndInfoUi(menu, looper) {
         miraMakeExportAndInfoUi(menu, looper, undefined, fullSizeGif)
     }
-    makeUI(variant, looper, fullSizeGif, newTiming, dimension,
-           showGallery, makeExportAndInfoUi);
+    makeSimpleUi(looper, makeExportAndInfoUi, newTiming, dimension,
+        showGallery);
 
     window.addEventListener('resize', () => {
         looper.scale({
